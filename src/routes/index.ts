@@ -1,9 +1,9 @@
 import { Router } from "express";
 
+import { incomesRoutes } from "./incomes.routes";
+
 const router = Router();
 
-router.get("/", (request, response) =>
-  response.json({ message: "Hello World" })
-);
+router.use("/incomes", incomesRoutes);
 
 export { router };
