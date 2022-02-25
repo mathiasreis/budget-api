@@ -11,16 +11,27 @@ class IncomesRepository implements IIncomesRepository {
     this.repository = getRepository(Income);
   }
 
-  async create({ description, amount, date }: ICreateIncomeDTO): Promise<void> {
+  async create({
+    description,
+    amount,
+    date,
+  }: ICreateIncomeDTO): Promise<Income> {
     const income = this.repository.create({ description, amount, date });
 
     await this.repository.save(income);
+
+    return income;
   }
 
   async findByDescription(description: string): Promise<Income> {
-    const income = this.repository.findOne({ description });
+    const income = await this.repository.findOne({ description });
 
     return income;
+  }
+
+  async listAll(): Promise<Income[]> {
+    const incomes = await this.repository.find();
+    return incomes;
   }
 }
 
