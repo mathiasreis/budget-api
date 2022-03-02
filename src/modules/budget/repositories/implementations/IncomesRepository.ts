@@ -29,6 +29,12 @@ class IncomesRepository implements IIncomesRepository {
     return income;
   }
 
+  async findById(id: string): Promise<Income> {
+    const income = await this.repository.findOne({ id });
+
+    return income;
+  }
+
   async listAll(): Promise<Income[]> {
     const incomes = await this.repository.find();
     return incomes;
