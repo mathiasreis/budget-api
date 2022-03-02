@@ -5,7 +5,9 @@ interface IIncomesRepository {
   create(data: ICreateIncomeDTO): Promise<Income>;
   findByDescription(description: string): Promise<Income>;
   findById(id: string): Promise<Income>;
+  update(income: ICreateIncomeDTO): Promise<Income>;
   listAll(): Promise<Income[]>;
+  delete(): Promise<void>;
 }
 
 export { IIncomesRepository };

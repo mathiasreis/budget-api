@@ -1,4 +1,4 @@
-import { getRepository, Repository } from "typeorm";
+import { getRepository, Repository, UpdateResult } from "typeorm";
 
 import { ICreateIncomeDTO } from "../../dtos/ICreateIncomeDTO";
 import { Income } from "../../entities/Income";
@@ -33,6 +33,10 @@ class IncomesRepository implements IIncomesRepository {
     const income = await this.repository.findOne({ id });
 
     return income;
+  }
+
+  async update(income): Promise<Income> {
+    return this.repository.save(income);
   }
 
   async listAll(): Promise<Income[]> {
