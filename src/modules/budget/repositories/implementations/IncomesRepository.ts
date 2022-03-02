@@ -43,6 +43,10 @@ class IncomesRepository implements IIncomesRepository {
     const incomes = await this.repository.find();
     return incomes;
   }
+
+  async delete(id: string): Promise<void> {
+    await this.repository.delete(id);
+  }
 }
 
 export { IncomesRepository };

@@ -7,7 +7,7 @@ interface IIncomesRepository {
   findById(id: string): Promise<Income>;
   update(income: ICreateIncomeDTO): Promise<Income>;
   listAll(): Promise<Income[]>;
-  delete(): Promise<void>;
+  delete(id: string): Promise<void>;
 }
 
 export { IIncomesRepository };

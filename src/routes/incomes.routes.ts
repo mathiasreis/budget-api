@@ -1,6 +1,7 @@
 import { Router } from "express";
 
 import createIncomeController from "../modules/budget/useCases/createIncome";
+import deleteIncomeController from "../modules/budget/useCases/deleteIncome";
 import getIncomeController from "../modules/budget/useCases/getIncome";
 import listIncomesController from "../modules/budget/useCases/listIncomes";
 import updateIncomeController from "../modules/budget/useCases/updateIncome";
@@ -21,6 +22,10 @@ incomesRoutes.get("/:id", (request, response) => {
 
 incomesRoutes.put("/:id", (request, response) => {
   return updateIncomeController().handle(request, response);
+});
+
+incomesRoutes.delete("/:id", (request, response) => {
+  return deleteIncomeController().handle(request, response);
 });
 
 export { incomesRoutes };
